@@ -35,7 +35,7 @@
     git clone https://github.com/RodionovArtem/MFTI.git
 
 ###### Переходим в директорию проекта
-    cd coderev
+    cd MFTI
 
 ###### Сборка и запуск контейнеров Docker
     docker-compose up —build
