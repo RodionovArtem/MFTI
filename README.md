@@ -32,13 +32,13 @@
 
 ### Установка и настройка
 ###### Клонируем репозиторий:
-git clone https://github.com/adrlksv/web-scrap.git
+    git clone https://github.com/adrlksv/web-scrap.git
 
 ###### Переходим в директорию проекта
-cd coderev
+    cd coderev
 
 ###### Сборка и запуск контейнеров Docker
-docker-compose up —build
+    docker-compose up —build
 
 
 ##### Ссылка, с которой работает парсер:
