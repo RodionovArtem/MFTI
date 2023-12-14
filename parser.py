@@ -33,29 +33,33 @@ def get_product_info():
         db.clear_data()  # Если в базе данных есть данные, удаляем их
     for url_info in generate_url_clothes():
         with db.get_connection() as con:
-            cur = con.cursor()
+            try:
+                cur = con.cursor()
 
-            new_response = requests.get(url_info, headers=headers)
+                new_response = requests.get(url_info, headers=headers)
 
-            new_soup = BeautifulSoup(new_response.text, 'lxml')
+                new_soup = BeautifulSoup(new_response.text, 'lxml')
 
-            # Извлекаем информацию о товаре
-            brand_and_name = new_soup.find('h1', class_='styles__productName___t3vA6').text
-            price = new_soup.find('p', class_='style__price___l9Hm2').find('span').text.strip() + 'р.'
-            info_product_data = new_soup.find('div', class_='style__infoBlocksRow___B0ZNv').find_all('li')
-            product_link = url_info
+                # Извлекаем информацию о товаре
+                brand_and_name = new_soup.find('h1', class_='styles__productName___t3vA6').text
+                price = new_soup.find('p', class_='style__price___l9Hm2').find('span').text.strip() + 'р.'
+                info_product_data = new_soup.find('div', class_='style__infoBlocksRow___B0ZNv').find_all('li')
+                product_link = url_info
 
-            info_product_list = []
-            for info_product_html in info_product_data:
-                info_product = info_product_html.text
-                info_product_list.append(info_product)
+                info_product_list = []
+                for info_product_html in info_product_data:
+                    info_product = info_product_html.text
+                    info_product_list.append(info_product)
 
-            description = '; '.join(info_product_list)
+                description = '; '.join(info_product_list)
 
-            # Записываем информацию в базу данных
-            cur.execute('''
-                       INSERT INTO products (brand_and_name, price, description, product_link)
-                       VALUES (?, ?, ?, ?)
-                   ''', (brand_and_name, price, description, product_link))
+                # Записываем информацию в базу данных
+                cur.execute('''
+                           INSERT INTO products (brand_and_name, price, description, product_link)
+                           VALUES (?, ?, ?, ?)
+                       ''', (brand_and_name, price, description, product_link))
 
-            con.commit()
+                con.commit()
+
+            except:
+                continue
