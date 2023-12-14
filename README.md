@@ -35,7 +35,7 @@
 git clone https://github.com/adrlksv/web-scrap.git
 
 ###### Переходим в директорию проекта
-cd web-scrap
+cd coderev
 
 ###### Сборка и запуск контейнеров Docker
 docker-compose up —build
