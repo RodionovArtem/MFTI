@@ -32,7 +32,7 @@
 
 ### Установка и настройка
 ###### Клонируем репозиторий:
-    git clone https://github.com/adrlksv/web-scrap.git
+    git clone https://github.com/RodionovArtem/MFTI.git
 
 ###### Переходим в директорию проекта
     cd coderev
