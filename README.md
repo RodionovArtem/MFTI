@@ -38,7 +38,7 @@
     cd MFTI
 
 ###### Сборка и запуск контейнеров Docker
-    docker-compose up —build
+    docker-compose up --build
 
 
 ##### Ссылка, с которой работает парсер:
