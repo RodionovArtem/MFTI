@@ -14,7 +14,7 @@ db = Database()
 
 
 def generate_url_clothes() -> str:
-    for count in range(1, 6):
+    for count in range(1, 2):
         url = f'https://www.tsum.ru/catalog/odezhda-2409/?sort=date&page={count}'
 
         response = requests.get(url, headers=headers)
